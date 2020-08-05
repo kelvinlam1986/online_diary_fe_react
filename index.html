@@ -7,6 +7,8 @@
     <title>Online Diary</title>
     <link href="vendor/images/favicon.ico" rel="icon" type="image">
     <link href="vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet" media="screen"/>
+    <link href="vendor/fullcalendar/fullcalendar.min.css" rel="stylesheet" />
+    
     <link href="css/site.css" rel="stylesheet" media="screen" />
 </head>
 <body>
@@ -47,13 +49,37 @@
         </div>
     </nav>
     <div class="container body-content">
-        Body
-        <hr />
+        <div class="row">
+            <div class="col-md-8">
+                <div id="calendar"></div>
+            </div>
+            <div class="col-md-4">
+                <h4>Diary Entry</h4>
+            </div>
+            <hr />
+        </div>
         <footer>
             <p>&copy; 2020 - Online Diary</p>
         </footer>
     </div>
     <script src="vendor/jquery/dist/jquery.js"></script>
     <script src="vendor/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="vendor/moment/moment.min.js"></script>
+    <script src="vendor/fullcalendar/fullcalendar.min.js"></script>
+    <script>
+          $(function() {
+            $('#calendar').fullCalendar({
+                themeSystem: 'bootstrap3',
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay,listMonth'
+                },
+                weekNumbers: true,
+                eventLimit: true, // allow "more" link when too many events
+                events: 'https://fullcalendar.io/demo-events.json'
+            });
+        });
+    </script>
 </body>
 </html>
